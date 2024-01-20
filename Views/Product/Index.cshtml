@@ -1,0 +1,139 @@
+﻿@model CrudAppModalPopUp.Models.DBEntities.Product
+
+
+   
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/productjs.js"></script>
+
+
+
+
+<h1>Index</h1>
+
+ <div>
+     <button class="btn btn-primary" id="btnAdd">Add Products</button>
+ </div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="text-center text-primary mb-lg-5">Products</h1>
+             <form method="get" id="searchForm" asp-action="Index" asp-controller="Product">
+                <div class="d-flex justify-content-end mb-3">
+                    <div class="col-md-4">
+                      <div class="input-group">
+                        <input name="searchTerm"  class="form-control" type="text" placeholder="Search by Name" />
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-info" id="btn-click">Search</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </form>
+
+
+  
+            <table class="table table-bordered">
+                <thead>
+                <tr class="text-center">
+                    <th> Id</th>
+                    <th> Name</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Action</th>
+
+
+                </tr>
+                </thead>
+                   
+                <tbody id="table_data">
+
+                   
+                   
+                    @foreach (var d in Model)
+                    {
+                       <tr>
+                         <td>@d.id</td>
+                        <td>@d.name</td>
+                        <td>@d.price</td>
+                        <td>@d.qty</td>
+                       
+                        
+                        </tr>
+                    }
+                    
+                    
+
+
+                  
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+                       
+                 
+
+<!--FOR INSERTING DATA -->
+<div class="modal" id="modal-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modalTitle" id="modal-title"></h1>
+            </div>
+
+            <div class="modal-body">
+                <input type="hidden"  asp-for="Id"/>
+
+                <div class="mb-1">
+                    <label asp-for="Name"></label>
+                    <input type="text" asp-for="Name" class="form-control" id="Name" placeholder="Enter the name" />
+                </div>
+
+                    
+
+                    <div class="mb-1">
+                    <label asp-for="Price"></label>
+                    <input type="number" asp-for="Price" class="form-control" id="Price" placeholder="Enter the price" />
+                    </div>
+
+                    <div class="mb-1">
+                    <label asp-for="Qty"></label>
+                    <input type="number" asp-for="Qty" class="form-control" id="Qty" placeholder="Enter the quantity" />
+                    </div>
+
+
+
+                    <div class="footer">
+                        <button class="btn btn-primary" id="Save" onclick="Insert()">Save</button>
+                    <button class="btn btn-warning" id="btnUpdate" style="display:none" onclick=" Update() ">Update</button>
+                        <button class="btn btn-danger">Close</button>
+                    </div>
+
+
+
+                   
+
+
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
