@@ -18,5 +18,7 @@ namespace CrudAppModalPopUp.Models.DBEntities
         [Required(ErrorMessage ="Quantity is required")]
         public int Qty { get; set; }
 
+        
+
     }
 }
